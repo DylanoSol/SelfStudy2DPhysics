@@ -4,6 +4,8 @@
 
 #pragma once
 
+#include "MyCode/Camera.h"
+
 namespace Tmpl8
 {
 
@@ -23,6 +25,7 @@ public:
 	void KeyDown( int ) { /* implement if you want to handle keys */ }
 	// data members
 	int2 mousePos;
+	Camera m_Camera = Camera(Tmpl8::float2(0.f));
 };
 
 } // namespace Tmpl8

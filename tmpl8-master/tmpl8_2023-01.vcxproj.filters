@@ -20,6 +20,9 @@
     <ClCompile Include="template\tmpl8math.cpp">
       <Filter>template</Filter>
     </ClCompile>
+    <ClCompile Include="MyCode\Entity.cpp" />
+    <ClCompile Include="MyCode\Camera.cpp" />
+    <ClCompile Include="MyCode\ConvexEntity.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="template\common.h">
@@ -47,6 +50,9 @@
     <ClInclude Include="template\tmpl8math.h">
       <Filter>template</Filter>
     </ClInclude>
+    <ClInclude Include="MyCode\Entity.h" />
+    <ClInclude Include="MyCode\Camera.h" />
+    <ClInclude Include="MyCode\ConvexEntity.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="template\LICENSE">
