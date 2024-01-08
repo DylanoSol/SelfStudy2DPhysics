@@ -38,16 +38,18 @@ bool AreConvexShapesIntersecting(const ConvexEntity& entity0, const ConvexEntity
 	//Last one needs to be done manually
 	faces.push_back(Face(entity1.m_Vertices[entity0.m_Vertices.size() - 1] + entity1.m_Position, entity1.m_Vertices[0] + entity1.m_Position));
 
-	//Doing stuff with the faces 
+	//Check line intersection for every face
 	for (Face f : faces)
 	{
 		float2 faceVector = float2((f.m_VertexB.x - f.m_VertexA.x), (f.m_VertexB.y - f.m_VertexA.y)); 
 		Line throughOrigin; 
 		throughOrigin.m_Slope = -1.f / (faceVector.y / faceVector.x); 
 
-		//Polygon 1 points
+		//Creating line out of Polygon 1 points
 
-		//Polygon 2 points
+		//Creating line out of Polygon 2 points 
+
+		//Intersect lines from these projected points 
 	}
 
 	//If all of the sides have intersected, the intersection has happened
