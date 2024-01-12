@@ -40,13 +40,29 @@ void Game::Init()
 // -----------------------------------------------------------
 void Game::Tick(float deltaTime)
 {
-
+	int color = 0xff0000; 
 	// clear the screen to black
 	screen->Clear( 0 );
+
+	if (GetAsyncKeyState(VK_UP))
+		testEnt2.m_Position.y--; 
+
+	if (GetAsyncKeyState(VK_DOWN))
+		testEnt2.m_Position.y++;
+
+	if (GetAsyncKeyState(VK_LEFT))
+		testEnt2.m_Position.x--;
+
+	if (GetAsyncKeyState(VK_RIGHT))
+		testEnt2.m_Position.x++;
 	
 	//m_Camera.SetPosition(m_Camera.GetPosition() + float2(1.f));
-	testEnt.Draw(screen, &m_Camera); 
-	testEnt2.Draw(screen, &m_Camera); 
-	AreConvexShapesIntersecting(testEnt, testEnt2); 
+	if (AreConvexShapesIntersecting(testEnt, testEnt2))
+	{
+		color = 0xffff00;
+	}
+
+	testEnt.Draw(screen, &m_Camera, color); 
+	testEnt2.Draw(screen, &m_Camera, color); 
 	
 }

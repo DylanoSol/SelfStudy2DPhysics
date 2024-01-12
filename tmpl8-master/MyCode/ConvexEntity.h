@@ -9,7 +9,7 @@ public:
     ~ConvexEntity(); 
 
     void Update(float deltaTime) override;
-    void Draw(Surface* screen, Camera* camera) override;
+    void Draw(Surface* screen, Camera* camera, int color) override;
 
     void SetAmountOfVertices(int amountOfVertices); 
     void AddVertex(Tmpl8::float2 vertex); 

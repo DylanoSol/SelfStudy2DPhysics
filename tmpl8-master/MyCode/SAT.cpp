@@ -42,14 +42,31 @@ bool AreConvexShapesIntersecting(const ConvexEntity& entity0, const ConvexEntity
 	for (Face f : faces)
 	{
 		float2 faceVector = float2((f.m_VertexB.x - f.m_VertexA.x), (f.m_VertexB.y - f.m_VertexA.y)); 
-		Line throughOrigin; 
-		throughOrigin.m_Slope = -1.f / (faceVector.y / faceVector.x); 
+		float2 faceProjectionAxis = float2(-faceVector.y, faceVector.x);
+
+		float min = INFINITY, max = -INFINITY; 
 
 		//Creating line out of Polygon 1 points
 
-		//Creating line out of Polygon 2 points 
+		for (size_t i = 0; i < entity0.m_Vertices.size(); i++)
+		{
+			float projectionPoint = dot(entity0.m_Vertices[i] + entity0.m_Position, faceProjectionAxis); 
+			min = std::min(min, projectionPoint); 
+			max = std::max(max, projectionPoint); 
+		}
+
+		float min2 = INFINITY, max2 = -INFINITY;
+
+		for (size_t i = 0; i < entity1.m_Vertices.size(); i++)
+		{
+			float projectionPoint = dot(entity1.m_Vertices[i] + entity1.m_Position, faceProjectionAxis);
+			min2 = std::min(min2, projectionPoint);
+			max2 = std::max(max2, projectionPoint);
+		}
 
 		//Intersect lines from these projected points 
+		if (!(max2 >= min && max >= min2))
+			return false; 
 	}
 
 	//If all of the sides have intersected, the intersection has happened

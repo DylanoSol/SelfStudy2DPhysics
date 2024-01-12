@@ -14,6 +14,6 @@ void Entity::Update(float deltaTime)
 
 }
 
-void Entity::Draw(Surface* screen, Camera* camera)
+void Entity::Draw(Surface* screen, Camera* camera, int color)
 {
 }
