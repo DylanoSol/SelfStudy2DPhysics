@@ -303,12 +303,4 @@ public:
 	Surface* screen = 0;
 };
 
-struct DrawData
-{
-	Surface* m_Screen = nullptr; 
-	Camera* m_Camera = nullptr; 
-	int m_DrawColor = 0xff0000; 
-
-};
-
 // EOF

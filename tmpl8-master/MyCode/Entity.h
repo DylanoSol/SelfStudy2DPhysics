@@ -1,6 +1,15 @@
 #pragma once
 
 class Camera; 
+
+struct DrawData
+{
+	Surface* m_Screen = nullptr;
+	Camera* m_Camera = nullptr;
+	int m_DrawColor = 0xff0000;
+
+};
+
 class Entity
 {
 public: 
