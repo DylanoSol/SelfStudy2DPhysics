@@ -24,6 +24,7 @@
     <ClCompile Include="MyCode\Camera.cpp" />
     <ClCompile Include="MyCode\ConvexEntity.cpp" />
     <ClCompile Include="MyCode\SAT.cpp" />
+    <ClCompile Include="MyCode\Level.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="template\common.h">
@@ -55,6 +56,7 @@
     <ClInclude Include="MyCode\Camera.h" />
     <ClInclude Include="MyCode\ConvexEntity.h" />
     <ClInclude Include="MyCode\SAT.h" />
+    <ClInclude Include="MyCode\Level.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="template\LICENSE">

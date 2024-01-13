@@ -125,6 +125,7 @@
     <ClCompile Include="MyCode\Camera.cpp" />
     <ClCompile Include="MyCode\Entity.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="MyCode\Level.cpp" />
     <ClCompile Include="MyCode\SAT.cpp" />
     <ClCompile Include="template\opencl.cpp" />
     <ClCompile Include="template\opengl.cpp" />
@@ -139,6 +140,7 @@
     <ClCompile Include="template\tmpl8math.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="MyCode\Level.h" />
     <ClInclude Include="MyCode\ConvexEntity.h" />
     <ClInclude Include="MyCode\Camera.h" />
     <ClInclude Include="cl\tools.cl" />
