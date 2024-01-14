@@ -5,6 +5,10 @@ public:
 	PhysicsObject(); 
 	~PhysicsObject(); 
 
+	//
+
+
+	//Callback interface
 	void OnHit(); 
 	void OnCollide(); 
 	void OnLeave(); 
@@ -16,6 +20,9 @@ public:
 	void RemoveOnHitCallback(void (*ptr)());
 	void RemoveOnCollideCallback(void (*ptr)());
 	void RemoveOnLeaveCallback(void (*ptr)());
+
+	//Make sure objects get removed at the end of a frame.
+	bool m_IsMarkedForRemove = false;
 
 private: 
 	//Function Pointer Arrays for callbacks
