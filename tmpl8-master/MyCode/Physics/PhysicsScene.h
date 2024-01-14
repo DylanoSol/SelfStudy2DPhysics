@@ -1,6 +1,7 @@
 #pragma once
 #include "CollisionPair.h"
 
+class PhysicsObject; 
 class PhysicsScene
 {
 public: 
