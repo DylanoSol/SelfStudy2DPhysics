@@ -16,6 +16,20 @@ void PhysicsScene::Initialize()
 
 void PhysicsScene::UpdateScene(float deltaTime, int amountOfSubSteps)
 {
+	for (int i = 0; i < amountOfSubSteps; i++)
+	{
+		//Movement updates 
+
+		//Collision Detection
+
+		//Collision Responses
+
+	}
+
+	//Callbacks + Comparing Collision Pairs 
+
+	//Removal 
+	RemovePhysicsObjects();
 }
 
 void PhysicsScene::AddPhysicsObject(PhysicsObject* object)

@@ -5,9 +5,6 @@ public:
 	PhysicsObject(); 
 	~PhysicsObject(); 
 
-	//
-
-
 	//Callback interface
 	void OnHit(); 
 	void OnCollide(); 
