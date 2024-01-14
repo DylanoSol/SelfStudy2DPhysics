@@ -6,6 +6,7 @@
 #include "game.h"
 #include "MyCode/ConvexEntity.h"
 #include "MyCode/SAT.h"
+#include "MyCode/Physics/PhysicsObject.h"
 
 
 // -----------------------------------------------------------
@@ -14,6 +15,26 @@
 
 ConvexEntity testEnt; 
 ConvexEntity testEnt2; 
+
+PhysicsObject* test = new PhysicsObject(); 
+
+
+void Test1()
+{
+	printf("g");
+}
+
+void Test2()
+{
+	printf("g");
+}
+
+void Test3()
+{
+	printf("g");
+}
+
+
 
 void Game::Init()
 {
@@ -33,6 +54,15 @@ void Game::Init()
 	testEnt2.AddVertex(float2(80.f, 120.f));
 	testEnt2.AddVertex(float2(50.f, 80.f));
 	testEnt2.m_Position = float2(350.f, 300.f);
+
+	void (*functionPointer1)() = &Test1;
+	void (*functionPointer2)() = &Test2;
+	void (*functionPointer3)() = &Test3;
+
+	test->AddOnHitCallback(functionPointer1); 
+	test->AddOnHitCallback(functionPointer2); 
+	//test->AddOnHitCallback(functionPointer3); 
+	test->RemoveOnHitCallback(functionPointer3); 
 }
 
 // -----------------------------------------------------------
