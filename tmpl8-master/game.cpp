@@ -61,8 +61,9 @@ void Game::Init()
 
 	test->AddOnHitCallback(functionPointer1); 
 	test->AddOnHitCallback(functionPointer2); 
-	//test->AddOnHitCallback(functionPointer3); 
+	test->AddOnHitCallback(functionPointer3); 
 	test->RemoveOnHitCallback(functionPointer3); 
+	test->OnHit(); 
 }
 
 // -----------------------------------------------------------
@@ -94,5 +95,6 @@ void Game::Tick(float deltaTime)
 
 	testEnt.Draw(screen, &m_Camera, color); 
 	testEnt2.Draw(screen, &m_Camera, color); 
+	
 	
 }

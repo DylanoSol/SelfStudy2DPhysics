@@ -11,14 +11,29 @@ PhysicsObject::~PhysicsObject()
 
 void PhysicsObject::OnHit()
 {
+	for (auto ptr : m_OnHitCallbacks)
+	{
+		auto function = reinterpret_cast<void(*)()>(ptr); 
+		function(); 
+	}
 }
 
 void PhysicsObject::OnCollide()
 {
+	for (auto ptr : m_OnCollideCallbacks)
+	{
+		auto function = reinterpret_cast<void(*)()>(ptr);
+		function();
+	}
 }
 
 void PhysicsObject::OnLeave()
 {
+	for (auto ptr : m_OnLeaveCallbacks)
+	{
+		auto function = reinterpret_cast<void(*)()>(ptr);
+		function();
+	}
 }
 
 void PhysicsObject::AddOnHitCallback(void (*ptr)())
