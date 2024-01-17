@@ -1,5 +1,6 @@
 #include "precomp.h"
 #include "SAT.h"
+#include "Physics/CollisionPair.h"
 
 //1: Get a face 
 //2: Get the slope from this face
@@ -14,10 +15,16 @@
 
 //Does not take object rotation into account currently. To take object rotation into the account:
 //All I need to do is rotate the vertices depending on the origin that is stated for the object. 
-bool AreConvexShapesIntersecting(const ConvexEntity& entity0, const ConvexEntity& entity1)
+bool AreConvexShapesIntersecting(const ConvexEntity& entity0, const ConvexEntity& entity1, CollisionPair* pair)
 {
+	//Clear the pair to make sure nothing is stored yet. Shouldn't be the case, but just an extra safety check. 
+	pair->m_Distances.clear(); 
+
 	//Gathering all faces
 	int amountOfFaces = entity0.m_Vertices.size() + entity1.m_Vertices.size(); 
+
+	//Reserve space for faces and distances. 
+	pair->m_Distances.reserve(amountOfFaces); 
 	std::vector<Face> faces; 
 	faces.reserve(amountOfFaces); 
 
@@ -38,6 +45,8 @@ bool AreConvexShapesIntersecting(const ConvexEntity& entity0, const ConvexEntity
 	//Last one needs to be done manually
 	faces.push_back(Face(entity1.m_Vertices[entity0.m_Vertices.size() - 1] + entity1.m_Position, entity1.m_Vertices[0] + entity1.m_Position));
 
+	float min1dDistance = INFINITY; 
+	float2 storedAxis = float2(0.f); 
 	//Check line intersection for every face
 	for (Face f : faces)
 	{
@@ -66,7 +75,33 @@ bool AreConvexShapesIntersecting(const ConvexEntity& entity0, const ConvexEntity
 
 		//Intersect lines from these projected points 
 		if (!(max2 >= min && max >= min2))
-			return false; 
+		{
+			pair->m_Distances.clear(); 
+			return false;
+		}
+
+		//Compute the shortest 1 dimensional distance. At the end, the projection axis with the smallest 1d distance is the one you are picking. 
+		
+		float pdist; 
+
+		if (min < min2)
+		{
+			pdist = min2 - max; 
+		}
+		else
+		{
+			pdist = min - max2; 
+		}
+
+		pdist = abs(pdist); 
+		pair->m_Distances.emplace_back(pdist);
+
+		if (pdist < min1dDistance)
+		{
+			min1dDistance = pdist;
+			storedAxis = faceProjectionAxis;
+		}
+
 	}
 
 	//If all of the sides have intersected, the intersection has happened

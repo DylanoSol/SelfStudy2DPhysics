@@ -7,6 +7,7 @@
 #include "MyCode/ConvexEntity.h"
 #include "MyCode/SAT.h"
 #include "MyCode/Physics/PhysicsObject.h"
+#include "MyCode/Physics/CollisionPair.h"
 
 
 // -----------------------------------------------------------
@@ -88,11 +89,12 @@ void Game::Tick(float deltaTime)
 		testEnt2.m_Position.x++;
 	
 	//m_Camera.SetPosition(m_Camera.GetPosition() + float2(1.f));
-	if (AreConvexShapesIntersecting(testEnt, testEnt2))
+	CollisionPair* pair = new CollisionPair(); 
+	if (AreConvexShapesIntersecting(testEnt, testEnt2, pair))
 	{
 		color = 0xffff00;
 	}
-
+	delete pair; 
 	testEnt.Draw(screen, &m_Camera, color); 
 	testEnt2.Draw(screen, &m_Camera, color); 
 	

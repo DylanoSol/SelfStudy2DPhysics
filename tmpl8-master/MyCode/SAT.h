@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ConvexEntity.h"
+class CollisionPair; 
 
 struct Ray
 {
@@ -35,4 +36,4 @@ public:
 	float2 m_VertexB;
 };
 
-bool AreConvexShapesIntersecting(const ConvexEntity& entity0, const ConvexEntity& entity1);
+bool AreConvexShapesIntersecting(const ConvexEntity& entity0, const ConvexEntity& entity1, CollisionPair* pair);
