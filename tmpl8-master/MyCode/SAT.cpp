@@ -15,7 +15,7 @@
 
 //Does not take object rotation into account currently. To take object rotation into the account:
 //All I need to do is rotate the vertices depending on the origin that is stated for the object. 
-bool AreConvexShapesIntersecting(const ConvexEntity& entity0, const ConvexEntity& entity1, CollisionPair* pair)
+bool AreConvexShapesIntersecting(ConvexEntity& entity0, ConvexEntity& entity1, CollisionPair* pair)
 {
 	//Clear the pair to make sure nothing is stored yet. Shouldn't be the case, but just an extra safety check. 
 	pair->m_Distances.clear(); 
@@ -50,8 +50,8 @@ bool AreConvexShapesIntersecting(const ConvexEntity& entity0, const ConvexEntity
 	//Check line intersection for every face
 	for (Face f : faces)
 	{
-		float2 faceVector = float2((f.m_VertexB.x - f.m_VertexA.x), (f.m_VertexB.y - f.m_VertexA.y)); 
-		float2 faceProjectionAxis = float2(-faceVector.y, faceVector.x);
+		float2 faceVector = normalize(float2((f.m_VertexB.x - f.m_VertexA.x), (f.m_VertexB.y - f.m_VertexA.y))); 
+		float2 faceProjectionAxis = normalize(float2(-faceVector.y, faceVector.x));
 
 		float min = INFINITY, max = -INFINITY; 
 
@@ -59,6 +59,7 @@ bool AreConvexShapesIntersecting(const ConvexEntity& entity0, const ConvexEntity
 
 		for (size_t i = 0; i < entity0.m_Vertices.size(); i++)
 		{
+			
 			float projectionPoint = dot(entity0.m_Vertices[i] + entity0.m_Position, faceProjectionAxis); 
 			min = std::min(min, projectionPoint); 
 			max = std::max(max, projectionPoint); 
@@ -93,17 +94,29 @@ bool AreConvexShapesIntersecting(const ConvexEntity& entity0, const ConvexEntity
 			pdist = min - max2; 
 		}
 
+		//Can probably half the amount of checks here, since things seem to be repeating. 
 		pdist = abs(pdist); 
 		pair->m_Distances.emplace_back(pdist);
 
 		if (pdist < min1dDistance)
 		{
+			pair->m_PointA = f.m_VertexA; 
+			pair->m_PointB = f.m_VertexB; 
+
 			min1dDistance = pdist;
 			storedAxis = faceProjectionAxis;
+
+			if (dot(float2(f.m_VertexA.x - f.m_VertexB.x, f.m_VertexA.y - f.m_VertexB.y), storedAxis) > 0)
+			{
+				storedAxis.x = -faceProjectionAxis.x; 
+				storedAxis.y = -faceProjectionAxis.y; 
+			}
 		}
 
+		//For now to test whether I can get the algorithm to work, make it so that Entity 2 always gets pushed away. 
 	}
 
+	entity1.m_Position = entity1.m_Position + (storedAxis * min1dDistance); 
 	//If all of the sides have intersected, the intersection has happened
 	return true;
 }

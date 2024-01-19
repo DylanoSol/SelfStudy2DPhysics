@@ -36,4 +36,4 @@ public:
 	float2 m_VertexB;
 };
 
-bool AreConvexShapesIntersecting(const ConvexEntity& entity0, const ConvexEntity& entity1, CollisionPair* pair);
+bool AreConvexShapesIntersecting(ConvexEntity& entity0, ConvexEntity& entity1, CollisionPair* pair);
