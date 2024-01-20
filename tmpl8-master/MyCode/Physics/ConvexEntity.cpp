@@ -1,5 +1,5 @@
 #include "precomp.h"
-#include "Camera.h"
+#include "../Camera.h"
 #include "ConvexEntity.h"
 
 ConvexEntity::ConvexEntity()

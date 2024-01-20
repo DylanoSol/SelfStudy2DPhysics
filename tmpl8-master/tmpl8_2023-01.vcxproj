@@ -123,12 +123,12 @@
   <ItemGroup>
     <ClCompile Include="MyCode\Physics\CollisionPair.cpp" />
     <ClCompile Include="MyCode\Physics\CollisionSolver.cpp" />
-    <ClCompile Include="MyCode\ConvexEntity.cpp" />
+    <ClCompile Include="MyCode\Physics\ConvexEntity.cpp" />
     <ClCompile Include="MyCode\Camera.cpp" />
     <ClCompile Include="MyCode\Entity.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="MyCode\Level.cpp" />
-    <ClCompile Include="MyCode\SAT.cpp" />
+    <ClCompile Include="MyCode\Physics\SAT.cpp" />
     <ClCompile Include="MyCode\Physics\PhysicsScene.cpp" />
     <ClCompile Include="MyCode\Physics\PhysicsObject.cpp" />
     <ClCompile Include="template\opencl.cpp" />
@@ -147,12 +147,12 @@
     <ClInclude Include="MyCode\Physics\CollisionPair.h" />
     <ClInclude Include="MyCode\Physics\CollisionSolver.h" />
     <ClInclude Include="MyCode\Level.h" />
-    <ClInclude Include="MyCode\ConvexEntity.h" />
+    <ClInclude Include="MyCode\Physics\ConvexEntity.h" />
     <ClInclude Include="MyCode\Camera.h" />
     <ClInclude Include="cl\tools.cl" />
     <ClInclude Include="MyCode\Entity.h" />
     <ClInclude Include="game.h" />
-    <ClInclude Include="MyCode\SAT.h" />
+    <ClInclude Include="MyCode\Physics\SAT.h" />
     <ClInclude Include="MyCode\Physics\PhysicsScene.h" />
     <ClInclude Include="MyCode\Physics\PhysicsObject.h" />
     <ClInclude Include="template\common.h" />

@@ -4,8 +4,8 @@
 
 #include "precomp.h"
 #include "game.h"
-#include "MyCode/ConvexEntity.h"
-#include "MyCode/SAT.h"
+#include "MyCode/Physics/ConvexEntity.h"
+#include "MyCode/Physics/SAT.h"
 #include "MyCode/Physics/PhysicsObject.h"
 #include "MyCode/Physics/CollisionPair.h"
 
@@ -62,7 +62,7 @@ void Game::Init()
 	testEnt3.AddVertex(float2(-1000.f, 10.f));
 	testEnt3.AddVertex(float2(1000.f, 10.f));
 	testEnt3.AddVertex(float2(1000.f, 0.f));
-	testEnt3.m_Position = float2(0.f, 600.f); 
+	testEnt3.m_Position = float2(0.f, 800.f); 
 
 	void (*functionPointer1)() = &Test1;
 	void (*functionPointer2)() = &Test2;
@@ -96,7 +96,7 @@ void Game::Tick(float deltaTime)
 	if (GetAsyncKeyState(VK_RIGHT))
 		testEnt2.m_Position.x++;
 	
-	testEnt2.m_Position.y += 0.1f; 
+	//testEnt2.m_Position.y += 0.1f; 
 	//m_Camera.SetPosition(m_Camera.GetPosition() + float2(1.f));
 	CollisionPair* pair = new CollisionPair(); 
 	int color2 = 0xff0000; 

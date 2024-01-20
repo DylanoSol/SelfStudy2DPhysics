@@ -1,6 +1,6 @@
 #include "precomp.h"
 #include "SAT.h"
-#include "Physics/CollisionPair.h"
+#include "CollisionPair.h"
 #include <math.h>
 
 //1: Get a face 
