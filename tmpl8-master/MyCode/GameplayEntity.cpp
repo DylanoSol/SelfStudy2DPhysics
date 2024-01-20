@@ -16,6 +16,11 @@ GameplayEntity::~GameplayEntity()
 void GameplayEntity::Update(float deltaTime)
 {
 	printf("Temporary GameObject Update call, oh yea here is deltatime lmfao: %f \n", deltaTime); 
+
+	if (m_PhysicsObject != nullptr)
+	{
+		m_Position = m_PhysicsObject->GetPosition(); 
+	}
 }
 
 void GameplayEntity::Draw(Surface* screen, Camera* camera, int color)

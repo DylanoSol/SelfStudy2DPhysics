@@ -14,8 +14,8 @@ public:
     void Update(float deltaTime) override;
     void Draw(Surface* screen, Camera* camera, int color) override;
 
-private:
     PhysicsObject* m_PhysicsObject = nullptr; 
+private:
  
 };
 

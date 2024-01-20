@@ -1,6 +1,6 @@
 #pragma once
 class PhysicsObject;
-class ConvexEntity; 
+
 struct CollisionPair
 {
 	CollisionPair(PhysicsObject* a, PhysicsObject* b); 

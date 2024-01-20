@@ -22,7 +22,6 @@
     </ClCompile>
     <ClCompile Include="MyCode\Entity.cpp" />
     <ClCompile Include="MyCode\Camera.cpp" />
-    <ClCompile Include="MyCode\Physics\ConvexEntity.cpp" />
     <ClCompile Include="MyCode\Physics\SAT.cpp" />
     <ClCompile Include="MyCode\Level.cpp" />
     <ClCompile Include="MyCode\Physics\PhysicsScene.cpp" />
@@ -60,7 +59,6 @@
     </ClInclude>
     <ClInclude Include="MyCode\Entity.h" />
     <ClInclude Include="MyCode\Camera.h" />
-    <ClInclude Include="MyCode\Physics\ConvexEntity.h" />
     <ClInclude Include="MyCode\Physics\SAT.h" />
     <ClInclude Include="MyCode\Level.h" />
     <ClInclude Include="MyCode\Physics\PhysicsScene.h" />

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "ConvexEntity.h"
 class CollisionPair; 
+class PhysicsObject; 
 
 struct Ray
 {
@@ -36,6 +36,6 @@ public:
 	float2 m_VertexB;
 };
 
-bool AreConvexShapesIntersecting(ConvexEntity& entity0, ConvexEntity& entity1, CollisionPair* pair);
+bool AreConvexShapesIntersecting(PhysicsObject* physicsObject0, PhysicsObject* physicsObject1, CollisionPair* pair);
 void ProjectVertices(const std::vector<float2>& vertices, const float2& projectionAxis, float& min, float& max); 
 float2 GetCenterOfMass(const std::vector<float2>& vertices); 

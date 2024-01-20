@@ -1,6 +1,8 @@
 #include "precomp.h"
 #include "SAT.h"
 #include "CollisionPair.h"
+#include "PhysicsObject.h"
+#include "ConvexShape.h"
 #include <math.h>
 
 //1: Get a face 
@@ -18,7 +20,7 @@
 //All I need to do is rotate the vertices depending on the origin that is stated for the object. 
 
 //New implementation derived from https://github.com/twobitcoder101/FlatPhysics
-bool AreConvexShapesIntersecting(ConvexEntity& entity0, ConvexEntity& entity1, CollisionPair* pair)
+bool AreConvexShapesIntersecting(PhysicsObject* physicsObject0, PhysicsObject* physicsObject1, CollisionPair* pair)
 {
 	//Clear the pair to make sure nothing is stored yet. Shouldn't be the case, but just an extra safety check. 
 	pair->m_Distances.clear(); 
@@ -30,17 +32,20 @@ bool AreConvexShapesIntersecting(ConvexEntity& entity0, ConvexEntity& entity1, C
 	std::vector<float2> verticesA;
 	std::vector<float2> verticesB; 
 
-	verticesA.reserve(entity0.m_Vertices.size()); 
-	verticesB.reserve(entity1.m_Vertices.size()); 
+	ConvexShape* shapeA = physicsObject0->GetShape(); 
+	ConvexShape* shapeB = physicsObject1->GetShape(); 
 
-	for (size_t i = 0; i < entity0.m_Vertices.size(); i++)
+	verticesA.reserve(shapeA->m_Vertices.size()); 
+	verticesB.reserve(shapeB->m_Vertices.size()); 
+
+	for (size_t i = 0; i < shapeA->m_Vertices.size(); i++)
 	{
-		verticesA.emplace_back(entity0.m_Vertices[i] + entity0.m_Position); 
+		verticesA.emplace_back(shapeA->m_Vertices[i] + physicsObject0->GetPosition()); 
 	}
 
-	for (size_t i = 0; i < entity1.m_Vertices.size(); i++)
+	for (size_t i = 0; i < shapeB->m_Vertices.size(); i++)
 	{
-		verticesB.emplace_back(entity1.m_Vertices[i] + entity1.m_Position);
+		verticesB.emplace_back(shapeB->m_Vertices[i] + physicsObject1->GetPosition());
 	}
 
 	//Project vertices of entity0
@@ -129,7 +134,7 @@ bool AreConvexShapesIntersecting(ConvexEntity& entity0, ConvexEntity& entity1, C
 		normal *= -1; 
 	}
 
-	entity1.m_Position = entity1.m_Position + normal * minDistance; 
+	physicsObject1->SetPosition(physicsObject1->GetPosition() + normal * minDistance); 
 
 	return true;
 }
