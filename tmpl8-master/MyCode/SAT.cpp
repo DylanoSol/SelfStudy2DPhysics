@@ -105,18 +105,55 @@ bool AreConvexShapesIntersecting(ConvexEntity& entity0, ConvexEntity& entity1, C
 
 			min1dDistance = pdist;
 			storedAxis = faceProjectionAxis;
-
-			if (dot(float2(f.m_VertexA.x - f.m_VertexB.x, f.m_VertexA.y - f.m_VertexB.y), storedAxis) > 0)
-			{
-				storedAxis.x = -faceProjectionAxis.x; 
-				storedAxis.y = -faceProjectionAxis.y; 
-			}
 		}
 
 		//For now to test whether I can get the algorithm to work, make it so that Entity 2 always gets pushed away. 
 	}
 
+	//Gather all vertices.
+	std::vector<float2> verticesA;
+	std::vector<float2> verticesB;
+
+	verticesA.reserve(entity0.m_Vertices.size());
+	verticesB.reserve(entity1.m_Vertices.size());
+
+	for (size_t i = 0; i < entity0.m_Vertices.size(); i++)
+	{
+		verticesA.emplace_back(entity0.m_Vertices[i] + entity0.m_Position);
+	}
+
+	for (size_t i = 0; i < entity1.m_Vertices.size(); i++)
+	{
+		verticesB.emplace_back(entity1.m_Vertices[i] + entity1.m_Position);
+	}
+
+	//Get centers to push the object out
+	float2 cA = GetCenterOfMass(verticesA);
+	float2 cB = GetCenterOfMass(verticesB);
+
+	//Flip when on right side
+	if (dot(cB - cA, storedAxis) < 0.f)
+	{
+		storedAxis *= -1;
+	}
+
 	entity1.m_Position = entity1.m_Position + (storedAxis * min1dDistance); 
 	//If all of the sides have intersected, the intersection has happened
 	return true;
+}
+
+float2 GetCenterOfMass(const std::vector<float2>& vertices)
+{
+	float sumX = 0.f;
+	float sumY = 0.f;
+
+	for (size_t i = 0; i < vertices.size(); i++)
+	{
+		sumX += vertices[i].x;
+		sumY += vertices[i].y;
+	}
+
+	float invAmount = 1.f / static_cast<float>(vertices.size());
+	float2 average = float2(sumX * invAmount, sumY * invAmount);
+	return average;
 }

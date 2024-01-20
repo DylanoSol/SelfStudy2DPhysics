@@ -37,3 +37,4 @@ public:
 };
 
 bool AreConvexShapesIntersecting(ConvexEntity& entity0, ConvexEntity& entity1, CollisionPair* pair);
+float2 GetCenterOfMass(const std::vector<float2>& vertices);
