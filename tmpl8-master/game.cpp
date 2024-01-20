@@ -54,7 +54,7 @@ void Game::Init()
 	testEnt2.AddVertex(float2(80.f, 200.f));
 	testEnt2.AddVertex(float2(80.f, 120.f));
 	testEnt2.AddVertex(float2(50.f, 80.f));
-	testEnt2.m_Position = float2(350.f, 300.f);
+	testEnt2.m_Position = float2(200.f, 300.f);
 
 	void (*functionPointer1)() = &Test1;
 	void (*functionPointer2)() = &Test2;

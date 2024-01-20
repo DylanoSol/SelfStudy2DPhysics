@@ -37,3 +37,5 @@ public:
 };
 
 bool AreConvexShapesIntersecting(ConvexEntity& entity0, ConvexEntity& entity1, CollisionPair* pair);
+void ProjectVertices(const std::vector<float2>& vertices, const float2& projectionAxis, float& min, float& max); 
+float2 GetCenterOfMass(const std::vector<float2>& vertices); 
