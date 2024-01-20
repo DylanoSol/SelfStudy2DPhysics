@@ -121,6 +121,7 @@
   </ItemDefinitionGroup>
   <!-- END Custom section -->
   <ItemGroup>
+    <ClCompile Include="MyCode\Physics\ConvexShape.cpp" />
     <ClCompile Include="MyCode\Physics\CollisionPair.cpp" />
     <ClCompile Include="MyCode\Physics\CollisionSolver.cpp" />
     <ClCompile Include="MyCode\Physics\ConvexEntity.cpp" />
@@ -144,6 +145,7 @@
     <ClCompile Include="template\tmpl8math.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="MyCode\Physics\ConvexShape.h" />
     <ClInclude Include="MyCode\Physics\CollisionPair.h" />
     <ClInclude Include="MyCode\Physics\CollisionSolver.h" />
     <ClInclude Include="MyCode\Level.h" />

@@ -29,6 +29,7 @@
     <ClCompile Include="MyCode\Physics\CollisionSolver.cpp" />
     <ClCompile Include="MyCode\Physics\CollisionPair.cpp" />
     <ClCompile Include="MyCode\Physics\PhysicsObject.cpp" />
+    <ClCompile Include="MyCode\Physics\ConvexShape.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="template\common.h">
@@ -65,6 +66,7 @@
     <ClInclude Include="MyCode\Physics\CollisionSolver.h" />
     <ClInclude Include="MyCode\Physics\CollisionPair.h" />
     <ClInclude Include="MyCode\Physics\PhysicsObject.h" />
+    <ClInclude Include="MyCode\Physics\ConvexShape.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="template\LICENSE">

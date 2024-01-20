@@ -1,4 +1,5 @@
 #pragma once
+class ConvexShape; 
 class PhysicsObject
 {
 public: 
@@ -18,6 +19,12 @@ public:
 	void RemoveOnCollideCallback(void (*ptr)());
 	void RemoveOnLeaveCallback(void (*ptr)());
 
+	void AttachShape(ConvexShape* shape);
+	ConvexShape* GetShape(); 
+
+	void SetPosition(float2 pos); 
+	float2 GetPosition(); 
+
 	//Make sure objects get removed at the end of a frame.
 	bool m_IsMarkedForRemove = false;
 
@@ -26,5 +33,9 @@ private:
 	std::vector<void*> m_OnHitCallbacks; 
 	std::vector<void*> m_OnCollideCallbacks; 
 	std::vector<void*> m_OnLeaveCallbacks; 
+
+	Tmpl8::float2 m_Position = float2(0.f); 
+
+	ConvexShape* m_Shape = nullptr; 
 };
 

@@ -41,6 +41,8 @@ void Test3()
 void Game::Init()
 {
 	//Horrible way to do this. I am aware. For now, I do not care
+
+	//Vertices should be added CounterClockwise. 
 	testEnt.SetAmountOfVertices(5); 
 	testEnt.AddVertex(float2(20.f, 40.f));
 	testEnt.AddVertex(float2(20.f, 200.f));

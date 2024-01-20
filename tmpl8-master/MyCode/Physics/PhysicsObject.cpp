@@ -1,5 +1,6 @@
 #include "precomp.h"
 #include "PhysicsObject.h"
+#include "ConvexShape.h"
 
 PhysicsObject::PhysicsObject()
 {
@@ -82,4 +83,30 @@ void PhysicsObject::RemoveOnLeaveCallback(void (*ptr)())
 		return;
 	}
 	m_OnLeaveCallbacks.erase(it);
+}
+
+void PhysicsObject::AttachShape(ConvexShape* shape)
+{
+	if (m_Shape != nullptr)
+	{
+		delete m_Shape; 
+		m_Shape = nullptr; 
+	}
+
+	m_Shape = shape; 
+}
+
+ConvexShape* PhysicsObject::GetShape()
+{
+	return m_Shape;
+}
+
+void PhysicsObject::SetPosition(float2 pos)
+{
+	m_Position = pos; 
+}
+
+float2 PhysicsObject::GetPosition()
+{
+	return m_Position; 
 }

@@ -118,6 +118,7 @@ bool AreConvexShapesIntersecting(ConvexEntity& entity0, ConvexEntity& entity1, C
 		}
 	}
 
+	//Resolution code. 
 	//Get centers to push the object out
 	float2 cA = GetCenterOfMass(verticesA); 
 	float2 cB = GetCenterOfMass(verticesB); 
