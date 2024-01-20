@@ -16,6 +16,7 @@
 
 ConvexEntity testEnt; 
 ConvexEntity testEnt2; 
+ConvexEntity testEnt3; 
 
 PhysicsObject* test = new PhysicsObject(); 
 
@@ -56,6 +57,13 @@ void Game::Init()
 	testEnt2.AddVertex(float2(50.f, 80.f));
 	testEnt2.m_Position = float2(200.f, 300.f);
 
+	testEnt3.SetAmountOfVertices(4); 
+	testEnt3.AddVertex(float2(-1000.f, 0.f)); 
+	testEnt3.AddVertex(float2(-1000.f, 10.f));
+	testEnt3.AddVertex(float2(1000.f, 10.f));
+	testEnt3.AddVertex(float2(1000.f, 0.f));
+	testEnt3.m_Position = float2(0.f, 600.f); 
+
 	void (*functionPointer1)() = &Test1;
 	void (*functionPointer2)() = &Test2;
 	void (*functionPointer3)() = &Test3;
@@ -88,15 +96,22 @@ void Game::Tick(float deltaTime)
 	if (GetAsyncKeyState(VK_RIGHT))
 		testEnt2.m_Position.x++;
 	
+	testEnt2.m_Position.y += 0.1f; 
 	//m_Camera.SetPosition(m_Camera.GetPosition() + float2(1.f));
 	CollisionPair* pair = new CollisionPair(); 
+	int color2 = 0xff0000; 
 	if (AreConvexShapesIntersecting(testEnt, testEnt2, pair))
 	{
 		color = 0xffff00;
 	}
+
+	if (AreConvexShapesIntersecting(testEnt3, testEnt2, pair))
+	{
+		color2 = 0xffff00;
+	}
 	delete pair; 
 	testEnt.Draw(screen, &m_Camera, color); 
 	testEnt2.Draw(screen, &m_Camera, color); 
-	
+	testEnt3.Draw(screen, &m_Camera, color2); 
 	
 }

@@ -54,10 +54,11 @@ bool AreConvexShapesIntersecting(ConvexEntity& entity0, ConvexEntity& entity1, C
 		float2 VertexA = verticesA[i];
 		float2 VertexB = verticesA[otherIndex];
 
-		//Use the cross product to make sure all of the normals are facing outwards. 
+		//Use the cross product to get the normal later
 		float3 point1 = float3(VertexA.x, VertexA.y, 0);
 		float3 point2 = float3(VertexB.x, VertexB.y, 0);
 
+		//If counterclockwise doing a crossproduct with a negative z makes the normal point outwards
 		float3 faceVector = cross(normalize(point2 - point1), float3(0, 0, -1));
 
 		float2 faceProjectionAxis = normalize(float2(faceVector.x, faceVector.y));
