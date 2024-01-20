@@ -8,6 +8,7 @@
 #include "MyCode/Physics/SAT.h"
 #include "MyCode/Physics/PhysicsObject.h"
 #include "MyCode/Physics/CollisionPair.h"
+#include "json.hpp"
 
 
 // -----------------------------------------------------------
@@ -82,6 +83,9 @@ void Game::Init()
 // -----------------------------------------------------------
 void Game::Tick(float deltaTime)
 {
+	nlohmann::ordered_json jsonData;
+	jsonData.push_back("s"); 
+
 	int color = 0xff0000; 
 	// clear the screen to black
 	screen->Clear( 0 );
