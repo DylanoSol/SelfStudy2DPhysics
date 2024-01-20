@@ -30,6 +30,7 @@
     <ClCompile Include="MyCode\Physics\CollisionPair.cpp" />
     <ClCompile Include="MyCode\Physics\PhysicsObject.cpp" />
     <ClCompile Include="MyCode\Physics\ConvexShape.cpp" />
+    <ClCompile Include="MyCode\GameplayEntity.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="template\common.h">
@@ -67,6 +68,7 @@
     <ClInclude Include="MyCode\Physics\CollisionPair.h" />
     <ClInclude Include="MyCode\Physics\PhysicsObject.h" />
     <ClInclude Include="MyCode\Physics\ConvexShape.h" />
+    <ClInclude Include="MyCode\GameplayEntity.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="template\LICENSE">
